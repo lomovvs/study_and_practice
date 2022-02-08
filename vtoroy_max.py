@@ -1,38 +1,39 @@
-def vtoroyMax(mnozhestvo):
-    mnozhestvoSort = mnozhestvo.copy()
-    mnozhestvoSort.sort()
-    mnozhestvoDlina = len(mnozhestvo)
-    if mnozhestvoDlina > 2:
-        mn1 = mnozhestvo[1]
-        mn2 = mnozhestvo[0]
+def calculating_second_maximum(mnozhestvo):
+    mnozhestvo_sort = mnozhestvo.copy()
+    mnozhestvo_sort.sort()
+    mnozhestvo_dlina = len(mnozhestvo)
+    if mnozhestvo_dlina > 2:
+        first_maximum = mnozhestvo_sort[1]
+        second_maximum = mnozhestvo_sort[0]
         for chisla in mnozhestvo:
-            if chisla > mn1:
-                mn2 = mn1
-                mn1 = chisla
-            elif chisla == mn1:
+            if chisla > first_maximum:
+                second_maximum = first_maximum
+                first_maximum = chisla
+            elif chisla == first_maximum:
                 pass
-            elif chisla > mn2:
-                mn2 = chisla
-        return mn2
-    elif mnozhestvoDlina == 2:
+            elif chisla > second_maximum:
+                second_maximum = chisla
+        return second_maximum
+    elif mnozhestvo_dlina == 2:
         if mnozhestvo[0] == mnozhestvo[1]:
-            return False
+            return None
         elif mnozhestvo[0] > mnozhestvo[1]:
-            mn2 = mnozhestvo[1]
-            return mn2
+            second_maximum = mnozhestvo[1]
+            return second_maximum
         else:
-            mn2 = mnozhestvo[0]
-            return mn2
+            second_maximum = mnozhestvo[0]
+            return second_maximum
     else:
-        return False
+        return None
 
-result1 = vtoroyMax([-2, 888, 3, 3, 15, 111, 0, 100, -15, 2, 0, 100, 99])
-assert result1 == 111, f'Wrong answer : {result1}'
-result2 = vtoroyMax([100, 110])
+
+result1 = calculating_second_maximum([-2, 3, 3, 15, 111, 0, 10, 2, 100, 99])
+assert result1 == 100, f'Wrong answer : {result1}'
+result2 = calculating_second_maximum([100, 110])
 assert result2 == 100, f'Wrong answer : {result2}'
-result3 = vtoroyMax([100, 100])
-assert result3 == False, f'Wrong answer : {result3}'
-result4 = vtoroyMax([-2])
-assert result4 == False, f'Wrong answer : {result4}'
+result3 = calculating_second_maximum([100, 100])
+assert result3 == None, f'Wrong answer : {result3}'
+result4 = calculating_second_maximum([-2])
+assert result4 == None, f'Wrong answer : {result4}'
 
 
