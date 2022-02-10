@@ -5,15 +5,18 @@ def calculating_second_maximum(mnozhestvo):
     if mnozhestvo_dlina > 2:
         first_maximum = mnozhestvo_sort[1]
         second_maximum = mnozhestvo_sort[0]
-        for chisla in mnozhestvo:
-            if chisla > first_maximum:
+        for chislo in mnozhestvo:
+            if chislo > first_maximum:
                 second_maximum = first_maximum
-                first_maximum = chisla
-            elif chisla == first_maximum:
+                first_maximum = chislo
+            elif chislo == first_maximum:
                 pass
-            elif chisla > second_maximum:
-                second_maximum = chisla
-        return second_maximum
+            elif chislo > second_maximum:
+                second_maximum = chislo
+        if second_maximum == first_maximum:
+            return None
+        else:
+            return second_maximum
     elif mnozhestvo_dlina == 2:
         if mnozhestvo[0] == mnozhestvo[1]:
             return None
@@ -35,5 +38,6 @@ result3 = calculating_second_maximum([100, 100])
 assert result3 == None, f'Wrong answer : {result3}'
 result4 = calculating_second_maximum([-2])
 assert result4 == None, f'Wrong answer : {result4}'
-
+result5 = calculating_second_maximum([100, 100, 100, 100])
+assert result5 == None, f'Wrong answer : {result5}'
 
